@@ -10,8 +10,9 @@ for i in range(30):
 
 label += ',jan,feb,mar,apr,may,jun,jul,aug,sep,oct,nov,dec'
 
-for i in range(28):
-	label += ',' + str(6+i)
+for i in range(0,28):
+
+	label += ',' + (str(6+i) if i%2==0 else (str(6 + i//2) + ':30'))
 
 f.write(label+'\n')
 
@@ -26,11 +27,17 @@ median = [10,20,30,70,100,85,70,55,40,25,20,20,50,60,40,30,20,20,20,60,70,115,11
 #plt.plot(median)
 #plt.show()
 
-day = 0
-date = 0
-month = 0
+day = -1
+date = -1
+month = -1
 
-for _ in range(0,1080):
+for i in range(0,1080):
+
+	day = (day+1)%7
+	date = (date+1)%30
+	if i%12 ==0:
+		month = (month+1)%12
+
 	new =[]
 	for time_segemt in median:
 		noise = 1 + np.random.normal(0,stand_div_percent)/100
@@ -62,9 +69,7 @@ for _ in range(0,1080):
 	f.write(stin+stnew[:-1]+'\n')
 
 
-	day = (day+1)%7
-	date = (date+1)%30
-	month = (month+1)%12
+
 
 
 f.close()
