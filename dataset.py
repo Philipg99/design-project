@@ -12,7 +12,7 @@ label += ',jan,feb,mar,apr,may,jun,jul,aug,sep,oct,nov,dec'
 
 for i in range(0,28):
 
-	label += ',' + (str(6+i) if i%2==0 else (str(6 + i//2) + ':30'))
+	label += ',' + (str(6+i//2) if i%2==0 else (str(6 + i//2) + ':30'))
 
 f.write(label+'\n')
 
