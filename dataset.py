@@ -35,7 +35,7 @@ for i in range(0,1080):
 
 	day = (day+1)%7
 	date = (date+1)%30
-	if i%12 ==0:
+	if i%30 ==0:
 		month = (month+1)%12
 
 	new =[]
